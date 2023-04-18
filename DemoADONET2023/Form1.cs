@@ -24,7 +24,7 @@ namespace DemoADONET2023
         private void btnListar_Click(object sender, EventArgs e)
         {
 
-            BRegion negocio= new BRegion();
+            BProductos negocio = new BProductos();
             dgvDemo.DataSource = negocio.Listar(txtDescription.Text);
 
         }

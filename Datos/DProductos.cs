@@ -1,26 +1,26 @@
-﻿using System;
+﻿using Entidad;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entidad;
+
 namespace Datos
 {
-    public class DRegion
+    public class DProductos
     {
-        private string connectionString= "Data Source=LAB707-08\\SQLEXPRESS02;Initial Catalog=CAVV_MonitoreoViolencia;Integrated Security=True;";
+        private string connectionString = "Data Source=LAB707-08\\SQLEXPRESS02;Initial Catalog=CAVV_MonitoreoViolencia;Integrated Security=True;";
 
-       
-        public   List<Region> Listar()
+        public List<Productos> Listar()
         {
 
             //Obtengo la conexión
             SqlConnection connection = null;
             SqlParameter param = null;
             SqlCommand command = null;
-            List<Region> regiones = null;
+            List<Productos> productos = null;
             try
             {
                 connection = new SqlConnection(connectionString);
@@ -28,7 +28,7 @@ namespace Datos
                 connection.Open();
 
                 //Hago mi consulta
-                command = new SqlCommand("USP_GetRegion", connection);
+                command = new SqlCommand("USP_SeleccionProducto", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 //param = new SqlParameter();
@@ -39,25 +39,25 @@ namespace Datos
                 //command.Parameters.Add(param);
 
                 SqlDataReader reader = command.ExecuteReader();
-                regiones = new List<Region>();
+                productos = new List<Productos>();
 
 
                 while (reader.Read())
                 {
 
-                    Region region = new Region();
-                    region.IdRegion = (int)reader["RegionID"];
-                    region.Description = reader["Description"].ToString();
-                    region.Code = reader["Code"].ToString();
+                    Productos producto = new Productos();
+                    producto.id = (int)reader["id"];
+                    producto.nombre = reader["nombre"].ToString();
+                    producto.precio = Convert.ToDouble(reader["precio"]);
 
-                    regiones.Add(region);
+                    productos.Add(producto);
 
                 }
 
                 connection.Close();
 
                 //Muestro la información
-                return regiones;
+                return productos;
 
 
             }
@@ -71,27 +71,26 @@ namespace Datos
                 connection = null;
                 command = null;
                 param = null;
-                regiones = null;
+                productos = null;
 
             }
 
 
         }
-
-        public void Insertar(Region region)
+        public void Insertar(Productos producto)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand("USP_InsRegion", connection); // Nombre del procedimiento almacenado
+                    SqlCommand command = new SqlCommand("USP_InsProducto", connection); // Nombre del procedimiento almacenado
                     command.CommandType = CommandType.StoredProcedure;
 
                     // Parámetros del procedimiento almacenado                
-                    command.Parameters.AddWithValue("@RegionID", region.IdRegion);
-                    command.Parameters.AddWithValue("@Code", region.Code);
-                    command.Parameters.AddWithValue("@Description", region.Description);
+                    command.Parameters.AddWithValue("@ProductoID", producto.id);
+                    command.Parameters.AddWithValue("@Nombre", producto.nombre);
+                    command.Parameters.AddWithValue("@Precio", producto.precio);
 
                     command.ExecuteNonQuery();
                 }
@@ -101,7 +100,7 @@ namespace Datos
 
                 throw ex;
             }
-            
+
         }
 
     }

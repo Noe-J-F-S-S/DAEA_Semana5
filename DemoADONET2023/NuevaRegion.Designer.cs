@@ -38,40 +38,46 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(198, 135);
+            this.label1.Location = new System.Drawing.Point(148, 110);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Code";
+            this.label1.Text = "Nombre";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(198, 185);
+            this.label2.Location = new System.Drawing.Point(148, 150);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 16);
+            this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Description";
+            this.label2.Text = "Precio";
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(324, 135);
+            this.txtCode.Location = new System.Drawing.Point(243, 110);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(100, 22);
+            this.txtCode.Size = new System.Drawing.Size(76, 20);
             this.txtCode.TabIndex = 2;
+            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(324, 178);
+            this.txtDescription.Location = new System.Drawing.Point(243, 145);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(100, 22);
+            this.txtDescription.Size = new System.Drawing.Size(76, 20);
             this.txtDescription.TabIndex = 3;
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(300, 249);
+            this.btnGrabar.Location = new System.Drawing.Point(225, 202);
+            this.btnGrabar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(75, 23);
+            this.btnGrabar.Size = new System.Drawing.Size(56, 19);
             this.btnGrabar.TabIndex = 4;
             this.btnGrabar.Text = "Grabar";
             this.btnGrabar.UseVisualStyleBackColor = true;
@@ -79,14 +85,15 @@
             // 
             // NuevaRegion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "NuevaRegion";
             this.Text = "NuevaRegion";
             this.ResumeLayout(false);

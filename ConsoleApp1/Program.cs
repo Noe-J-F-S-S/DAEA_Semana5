@@ -36,8 +36,6 @@ namespace ConsoleApp1
 
             }            
 
-
-
             Console.Read();
 
 

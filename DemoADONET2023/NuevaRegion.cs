@@ -23,11 +23,11 @@ namespace DemoADONET2023
 
             try
             {
-                BRegion negocio = new BRegion();
-                negocio.Insertar(new Entidad.Region
+                BProductos negocio = new BProductos();
+                negocio.Insertar(new Entidad.Productos
                 {
-                    Code = txtCode.Text,
-                    Description = txtDescription.Text,
+                    nombre = txtCode.Text,
+                    precio = Convert.ToDouble(txtDescription.Text)
                 });
                 MessageBox.Show("Registro exitoso");
             }
@@ -37,6 +37,11 @@ namespace DemoADONET2023
 
             }
             
+
+        }
+
+        private void txtCode_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
